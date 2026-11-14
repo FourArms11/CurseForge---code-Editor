@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma skills sync || exit 0"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@auth/prisma-adapter": "^2.11.3",
     "@base-ui/react": "^1.9.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
@@ -25,12 +27,33 @@
     "dotenv": "^18.0.10",
     "lucide-react": "^1.73.0",
     "motion": "^14.14.0",
+=======
+    "@base-ui/react": "^1.9.0",
+    "@prisma/client": "^7.10.1",
+    "@shadcn/react": "^0.3.1",
+    "class-variance-authority": "^0.7.1",
+    "cmdk": "^1.1.1",
+    "cn": "^0.5.2",
+    "date-fns": "^4.4.0",
+    "embla-carousel-react": "^8.6.0",
+    "input-otp": "^1.5.0",
+    "lucide-react": "^1.72.0",
+>>>>>>> e50f3a944afe51679c42e0c60dfe8ac056ad5751
     "next": "16.4.6",
     "next-auth": "^5.0.0-beta.32",
     "react": "19.3.0",
+<<<<<<< HEAD
     "react-dom": "19.3.0",
     "shadcn": "^4.23.0",
     "tailwind-merge": "^3.7.0",
+=======
+    "react-day-picker": "^10.0.2",
+    "react-dom": "19.3.0",
+    "react-resizable-panels": "^4.21.0",
+    "recharts": "^3.8.0",
+    "shadcn": "^4.23.0",
+    "shiki": "^4.6.0",
+>>>>>>> e50f3a944afe51679c42e0c60dfe8ac056ad5751
     "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
@@ -40,7 +63,11 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+<<<<<<< HEAD
     "prisma": "^6.19.3",
+=======
+    "prisma": "^7.10.1",
+>>>>>>> e50f3a944afe51679c42e0c60dfe8ac056ad5751
     "tailwindcss": "4.3.3",
     "typescript": "^5"
   }
