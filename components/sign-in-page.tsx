@@ -26,7 +26,7 @@ import {
 export function SignInPage({
   onSubmit,
   onOAuth,
-  providers = ['google', 'github'],
+  providers = ['google', 'github', 'discord'],
   signUpHref = '/sign-up',
   forgotHref = '/forgot-password',
 }: {

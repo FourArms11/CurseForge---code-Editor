@@ -19,7 +19,7 @@ import { Input } from '@/components/ui/input'
  * Nothing here talks to a server. Each page takes an `onSubmit` that you
  * point at your auth provider; return a message to show it as an error.
  */
-export type OAuthProvider = 'google' | 'github'
+export type OAuthProvider = 'google' | 'github' | 'discord'
 
 /** Returns nothing on success, or a message to show the person. */
 export type SubmitResult = void | string | Promise<void | string>
@@ -43,7 +43,7 @@ export function AuthShell({
       <Backdrop />
       <header className="flex items-center justify-between px-6 py-5 sm:px-12">
         <a href={homeHref} aria-label="Home" className="rounded-md outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50">
-          <Logo />
+          {/* <Logo wordmark={false} /> */}
         </a>
         <ThemeSwitcher />
       </header>
@@ -59,7 +59,7 @@ export function AuthShell({
         </div>
       </main>
 
-      <footer className="px-6 py-6 text-center font-montserrat text-[13px] text-gray-500">© {new Date().getFullYear()} ChaiCode. All rights reserved.</footer>
+      <footer className="px-6 py-6 text-center font-montserrat text-[13px] text-gray-500">© CurseForge. All rights reserved.</footer>
     </div>
   )
 }
@@ -119,7 +119,7 @@ export function FormError({ message }: { message?: string | null }) {
   )
 }
 
-const providerMeta: Record<OAuthProvider, { label: string; icon: React.ReactNode }> = {
+const providerMeta: Record<string, { label: string; icon: React.ReactNode }> = {
   google: {
     label: 'Google',
     icon: (
@@ -136,6 +136,22 @@ const providerMeta: Record<OAuthProvider, { label: string; icon: React.ReactNode
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-4">
         <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+      </svg>
+    ),
+  },
+  discordLegacy: {
+    label: 'Discord',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-4">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-3.558-1.238c-.856-.284-1.666-.356-2.45-.215a19.848 19.848 0 0 0-3.558-1.238c-.856-.284-1.666-.356-2.45-.215a19.848 19.848 0 0 0-3.558-1.238c-.856-.284-1.666-.356-2.45-.215a19.848 19.848 0 0 0-3.558-1.238c-.856-.284-1.666-.356-2.45-.215a19.848 19.848 0 0 0-3.558-1.238c-.856-.284-1.666-.356-2.45-.215a19.848 19.848 0 0 0-3.558-1.238c-.777-.277-1 .777 .777 .777 .777 .777 .777 .777 .777 .777 .77７ .７７７ .７７７ .７７７ .７７７ .７７７ .７７７ .７９９ .９９９ .９９９ .９９９ .９９９ ." />
+      </svg>
+    ),
+  },
+  discord: {
+    label: 'Discord',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-4">
+        <path d="M19.54 3.2A18.2 18.2 0 0 0 15 1.8l-.55 1.12a16.6 16.6 0 0 0-4.9 0L9 1.8a18.2 18.2 0 0 0-4.54 1.4C1.58 7.5 0 11.7.4 15.85A18.4 18.4 0 0 0 6 18.7l1.35-1.83c-.73-.27-1.42-.6-2.06-.98l.5-.38c3.97 1.83 8.28 1.83 12.2 0l.5.38c-.64.38-1.33.71-2.06.98L17.78 18.7a18.4 18.4 0 0 0 5.6-2.85c-.6-4.15-2.18-8.35-3.84-12.65ZM8.1 14.35c-1.2 0-2.18-1.1-2.18-2.46s.96-2.46 2.18-2.46 2.2 1.1 2.18 2.46c0 1.36-.96 2.46-2.18 2.46Zm7.8 0c-1.2 0-2.18-1.1-2.18-2.46s.96-2.46 2.18-2.46 2.18 1.1 2.18 2.46-.96 2.46-2.18 2.46Z" />
       </svg>
     ),
   },

@@ -6,15 +6,9 @@ export { auth as proxy } from "@/auth"
 
 const DEFAULT_LOGIN_REDIRECT = "/"
 
-const publicRoutes: string[] = []
+const publicRoutes: string[] = ["/sign-in", "/sign-up", "/forgot-password"]
 
-const protectedRoutes: string[] = ["/"]
-
-const authRoutes: string[] = ["/auth/login", "/auth/signup"]
-
-const apiAuthRoutes: String[] = ["/api/auth"]
-
-
+const authRoutes: string[] = ["/sign-in", "/sign-up", "/forgot-password"]
 
 const { auth } = NextAuth(authConfig)
 
@@ -32,8 +26,11 @@ export default auth((req) => {
         }
         return null;
     }
+    if (isloggedIn && isAuthRoute) {
+        return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    }
     if (!isloggedIn && !isPublicRoute) {
-        return Response.redirect(new URL("/auth/login", nextUrl));
+        return Response.redirect(new URL("/sign-in", nextUrl));
     }
     return null;
 

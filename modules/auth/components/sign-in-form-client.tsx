@@ -16,7 +16,7 @@ import {
   useAuthSubmit,
   type OAuthProvider,
   type SubmitResult,
-} from '@/registry/chaiui/templates/auth-shell'
+} from '@/components/auth-shell'
 
 /**
  * Sign in. Wire `onSubmit` and `onOAuth` to your auth provider (Better Auth,
